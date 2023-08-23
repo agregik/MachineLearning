@@ -164,3 +164,25 @@ matrix10 = np.array([[1, 2, 3],
                      [7, 8, 9]])
 # Транспонировать матрицу
 # print(matrix10.T)
+
+# 1.11 Сглаживание матрицы
+
+import numpy as np
+
+matrix11 = np.array([[1, 2, 3],
+                     [4, 5, 6],
+                     [7, 8, 9]])
+
+# Сгладить матрицу (привести к одномерному массиву)
+# print(matrix11.flatten())
+
+# 1.12 Нахождение ранга матрицы
+
+import numpy as np
+
+matrix12 = np.array([[1, 1, 1],
+                     [1, 1, 10],
+                     [1, 1, 15]])
+
+# Вернуть ранг матрицы
+# print(np.linalg.matrix_rank(matrix12))
