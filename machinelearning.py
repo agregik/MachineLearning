@@ -270,3 +270,12 @@ matrix_b = np.array([[1, 3, 1],
 
 # Сложить матрицы
 # print(np.add(matrix_b, matrix_a))
+# print(matrix_b + matrix_a)
+
+# Вычесть из одной матрицу другую
+# print(matrix_a - matrix_b)
+# print(np.subtract(matrix_a, matrix_b))
+
+# Умножить одну матрицу на другую
+# print(matrix_a * matrix_b)
+
