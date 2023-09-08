@@ -256,12 +256,17 @@ vector_b = np.array([4, 5, 6])
 # Альтернативный способ нахождения скалярного произведения
 # print(vector_a @ vector_b)
 
-# Сложение и вычитание матриц
+# 1.18 Сложение и вычитание матриц
 
 import numpy as np
 
 matrix_a = np.array([[1, 1, 1],
-                    [1, 1, 1],
-                    [1, 1, 2]])
-matrix_b = np.array([])
+                     [1, 1, 1],
+                     [1, 1, 2]])
 
+matrix_b = np.array([[1, 3, 1],
+                     [1, 3, 1],
+                     [1, 3, 8]])
+
+# Сложить матрицы
+# print(np.add(matrix_b, matrix_a))
