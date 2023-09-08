@@ -26,6 +26,7 @@ matrix2 = np.array([[0, 0],
 # Создать разреженную матрицу - строку (CSR - матрицу)
 
 matrix_sparse = sparse.csr_matrix(matrix2)
+# Вывести разреженную матрицу
 # print(matrix_sparse)
 
 # Создать более крупную разреженную матрицу - строку, но сначала создадим обычную матрицу
@@ -230,3 +231,37 @@ matrix15 = np.array([[1, 2, 3],
 # print(sum(matrix15.diagonal()))
 
 # 1.16 Нахождение собственных значений и собственных векторов
+
+import numpy as np
+
+matrix16 = np.array([[1, -1, 3],
+                     [1, 1, 6],
+                     [3, 8, 9]])
+
+# Вычислить собственные значения и векторы
+eigenvalues, eigenvectors = np.linalg.eig(matrix16)
+# print(eigenvalues)
+# print(eigenvectors)
+
+# 1.17 Вычисление скалярных произведений
+
+import numpy as np
+
+vector_a = np.array([1, 2, 3])
+vector_b = np.array([4, 5, 6])
+
+# Вычислить скалярное произведение
+# print(np.dot(vector_a,vector_b))
+
+# Альтернативный способ нахождения скалярного произведения
+# print(vector_a @ vector_b)
+
+# Сложение и вычитание матриц
+
+import numpy as np
+
+matrix_a = np.array([[1, 1, 1],
+                    [1, 1, 1],
+                    [1, 1, 2]])
+matrix_b = np.array([])
+
