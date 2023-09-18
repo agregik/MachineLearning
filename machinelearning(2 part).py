@@ -116,4 +116,16 @@ dataframe3 = pd.read_json(url, orient='columns')
 # Взглянуть на первые две строки
 print(dataframe3.head(2))
 
+# 2.6 Опрашивание базы данных SQL
 
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Создать подключение к базе данных
+database_connection = create_engine('sqlite:///sample.db')
+
+# Загрузить данные
+dataframe4 = pd.read_sql_query('SELECT * FROM data', database_connection)
+
+# Взглянуть на первые две строки
+print(dataframe4.head(2))
