@@ -25,3 +25,4 @@ dataframe['Водитель'] = [True, False]
 # Создать строку и добавить её в конец фрейма данных
 dataframe.loc[len(dataframe.index)] = ['Анна Буланникова', 17, True]
 print(dataframe)
+
