@@ -26,3 +26,4 @@ dataframe['Водитель'] = [True, False]
 dataframe.loc[len(dataframe.index)] = ['Анна Буланникова', 17, True]
 print(dataframe)
 
+#
