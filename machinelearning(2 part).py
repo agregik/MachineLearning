@@ -73,7 +73,7 @@ features4, target4 = make_blobs(n_samples=100,
 # print('Матрица признаков\n', features4[:3])
 # print('Вектор целей\n', target4[:3])
 
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 # Взглянуть на диаграмму расселения
 # plt.scatter(features4[:, 0], features4[:, 1], c=target4)
@@ -90,7 +90,7 @@ url = 'https://tinyurl.com/simulated-data'
 dataframe = pd.read_csv(url)
 
 # Взглянуть на первые две строки
-print(dataframe.head(2))
+# print(dataframe.head(2))
 
 # 2.4 Загрузка данных Excel
 
