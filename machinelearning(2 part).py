@@ -129,3 +129,4 @@ dataframe4 = pd.read_sql_query('SELECT * FROM data', database_connection)
 
 # Взглянуть на первые две строки
 print(dataframe4.head(2))
+
