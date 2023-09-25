@@ -114,7 +114,7 @@ url3 = 'https://tinyurl.com/simulated-json'
 dataframe3 = pd.read_json(url, orient='columns')
 
 # Взглянуть на первые две строки
-print(dataframe3.head(2))
+# print(dataframe3.head(2))
 
 # 2.6 Опрашивание базы данных SQL
 
@@ -128,5 +128,5 @@ database_connection = create_engine('sqlite:///sample.db')
 dataframe4 = pd.read_sql_query('SELECT * FROM data', database_connection)
 
 # Взглянуть на первые две строки
-print(dataframe4.head(2))
+# print(dataframe4.head(2))
 
