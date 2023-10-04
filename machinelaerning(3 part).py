@@ -25,6 +25,7 @@ dataframe['Гендер'] = ['Мужчина', 'Мужчина']
 # Создать строку и добавить её в конец фрейма данных
 dataframe.loc[len(dataframe.index)] = ['Анна Буланникова', 17, True, 'Девушка']
 dataframe.loc[len(dataframe.index)] = ['Гриша Боков', 13, False, 'Мужчина']
+# dataframe.loc[len(dataframe.index)] = ['Гриша Боков', 13, False, 'Мужчина']
 
 # Взглянуть на фрейм данных
 # print(dataframe)
@@ -128,19 +129,101 @@ column_names = collections.defaultdict(str)
 # dataframe['Гендер'] = dataframe['Гендер'].replace['Мужчина', Nan]
 # print(dataframe)
 
-
-import pandas as np
+# import pandas as np
 
 # Заменить значения с NaN
-dataframe['Гендер'] = dataframe['Гендер'].replace('Мужчина', np.NaT)
+# dataframe['Гендер'] = dataframe['Гендер'].replace('Мужчина', np.NaT)
 # print(dataframe)
 
 # 3.10 Удаление столбцов
 
 # Удалить столбец по заданному параметру
-dataframe = dataframe.drop('Возраст', axis=1)
+# dataframe = dataframe.drop('Возраст', axis=1)
 # print(dataframe)
 
 # Отбросить столбцы по заданному параметру
-dataframe = dataframe.drop(['Имя', 'Возраст'], axis=1)
-# print(dataframe.head(2))
+# dataframe = dataframe.drop(['Имя', 'Возраст'], axis=1)
+# print(dataframe)
+
+# Отбросить стобец по индексу (можно использовать такой метод,если неизвестно название столбца)
+dataframe_drop_column = dataframe.drop(dataframe.columns[1], axis=1)
+# print(dataframe_drop_column)
+
+# Создать новую переменную, для того чтобы не менять основной фрейм данных и рассмотреть его изменения в отдельной переменной
+dataframe_name_dropped = dataframe.drop(dataframe.columns[0], axis=1)
+# print(dataframe_name_dropped)
+
+# 3.11 Удаление строки
+
+# Удалить строки по заданному параметру
+dataframe_drop_stroku = dataframe[dataframe['Гендер'] != 'Мужчина']
+# print(dataframe_drop_stroku)
+
+# Удалить строку по уникальному значению
+dataframe_drop_poimeni = dataframe[dataframe['Имя'] != 'Анна Буланникова']
+# print(dataframe_drop_poimeni)
+
+# Удалить строку по индексу
+dataframe_drop_poindeksu = dataframe[dataframe.index != 0]
+# print(dataframe_drop_poindeksu)
+
+
+# 3.12 Удаление повторяющихся строк
+
+# Удалить дубликаты
+dataframe_dublicates = dataframe.drop_duplicates()
+# print(dataframe_dublicates)
+
+# Показать количество строк в исходном фрейме данных
+# print('Количество строк в исходном фрейме данных:', len(dataframe))
+
+# Показать количество строк после дубликации
+# print('Количество строк в после дубликации:', len(dataframe.drop_duplicates()))
+
+# Удалить дубликаты (Метод показывает первое появление уникального элемента, а остальные отбрасывает)
+# print(dataframe.drop_duplicates(subset=['Гендер']))
+
+# Удалить дубликаты применив метод, позволяющий выбирать по какому критерию будет отбрасывать
+# print(dataframe.drop_duplicates(subset=['Возраст'], keep='last'))
+
+# Посмотреть на каких позициях по счёту нах-ся в фрейме данных
+# print(dataframe.duplicated())
+
+# 3.13 Группирование строк по значениям (Смотри Notion,у тебя мало данных)
+
+# Сгруппировать строки по значениям столбца 'Возраст', вычислить среднее каждой группы
+# print(dataframe.groupby('Возраст').mean())
+
+# Сгруппировать строки, подсчитать строки
+# print(dataframe.groupby('Водитель')['Имя'].count())
+
+# Сгруппировать строки, вычислить среднее
+# print(dataframe.groupby(['Имя', 'Водитель'])['Возраст'].mean())
+
+# 3.14 Группирование строк по значениям времени
+
+import pandas as pd
+import numpy as np
+
+# Создать диапазон дат
+time_index = pd.date_range('06/06/2017', periods=100000, freq='30S')
+
+# Создать фрейм данных
+dataframe1 = pd.DataFrame(index=time_index)
+
+# Создать столбец случайных значений со значением суммы продаж
+dataframe1['Sale_Amount'] = np.random.randint(1, 10, 100000)
+
+# Сгруппировать строки по неделе, вычислить сумму за неделю
+# print(dataframe1.resample('W').sum())
+
+# Сгруппировать строки по двум неделям, вычилсить сумму за эти две недели
+# print(dataframe1.resample('2W').mean())
+
+# Сгруппировать по месяцу, посчитать строки
+# print(dataframe1.resample('M').count())
+
+# Сгруппировать по месяцу с помощью метода label, подсчитать строки
+# print(dataframe1.resample('M',label='left').count())
+
+
