@@ -21,12 +21,11 @@ dataframe = pd.DataFrame()
 dataframe['Имя'] = ['Никита Боков', 'Рома Алиев']
 dataframe['Возраст'] = [18, 17]
 dataframe['Водитель'] = [True, False]
-dataframe['Гендер'] = ['Мужчина', 'Мужчина']
+dataframe['Гендер'] = dataframe['Мужчина', 'Мужчина']
 # Создать строку и добавить её в конец фрейма данных
 dataframe.loc[len(dataframe.index)] = ['Анна Буланникова', 17, True, 'Девушка']
 dataframe.loc[len(dataframe.index)] = ['Гриша Боков', 13, False, 'Мужчина']
 # dataframe.loc[len(dataframe.index)] = ['Гриша Боков', 13, False, 'Мужчина']
-
 # Взглянуть на фрейм данных
 # print(dataframe)
 
@@ -160,7 +159,7 @@ dataframe_drop_stroku = dataframe[dataframe['Гендер'] != 'Мужчина']
 # print(dataframe_drop_stroku)
 
 # Удалить строку по уникальному значению
-dataframe_drop_poimeni = dataframe[dataframe['Имя'] != 'Анна Буланникова']
+dataframe_drop_poimeni = dataframe[dataframe['Имя'] != 'Гриша Боков']
 # print(dataframe_drop_poimeni)
 
 # Удалить строку по индексу
@@ -214,6 +213,7 @@ dataframe1 = pd.DataFrame(index=time_index)
 # Создать столбец случайных значений со значением суммы продаж
 dataframe1['Sale_Amount'] = np.random.randint(1, 10, 100000)
 
+
 # Сгруппировать строки по неделе, вычислить сумму за неделю
 # print(dataframe1.resample('W').sum())
 
@@ -225,5 +225,86 @@ dataframe1['Sale_Amount'] = np.random.randint(1, 10, 100000)
 
 # Сгруппировать по месяцу с помощью метода label, подсчитать строки
 # print(dataframe1.resample('M',label='left').count())
+
+# 3.15 Обход столба в цикле
+
+# Напечатать первые два имени в верхнем регистре
+# for name in dataframe['Имя'][0:2]:
+# print(name.upper())
+
+# Альтернативный способ вывода двух имен в верхнем регистре
+# print([name.upper() for name in dataframe['Имя'][0:2]])
+
+# 3.16 Применение функции ко всем эл-ам в столбце
+
+# Создать функцию
+
+def appercase(x):
+    return x.upper()
+
+
+# Применить функцию, показать две строки
+# print(dataframe['Имя'].apply(appercase)[0:2])
+
+
+# 3.17 Применение функций к группам (Считает кол-во гендеров и выводит их кол-во)
+# print(dataframe.groupby('Гендер').apply(lambda x: x.count()))
+
+# 3.18 Конкатенация фреймов данных
+
+import pandas as pd
+
+# Создать фреймы данных
+data_a = {'id': ['1', '2', '3'],
+          'first': ['Женя', 'Ира', 'Гриша'],
+          'last': ['Паша', 'Вера', 'Полина']}
+dataframe_a = pd.DataFrame(data_a, columns=['id', 'first', 'last'])
+
+data_b = {'id': ['4', '5', '6'],
+          'first': ['Никита', 'Аня', 'Эльдар'],
+          'last': ['Костя', 'Рома', 'Саша']}
+dataframe_b = pd.DataFrame(data_b, columns=['id', 'first', 'last'])
+
+# Объеденить фреймы данных по строкам (Конкатенировать)
+# print(pd.concat([dataframe_a, dataframe_b], axis=0))
+
+# Объеденить фреймы данных по столбцам (Конкатенировать)
+# print(pd.concat([dataframe_a, dataframe_b], axis=1))
+
+# Создать строку и добавить её в конец фрейма данных
+dataframe_a.loc[len(dataframe_a.index)] = [7, 'Вадим', 'Сергей']
+
+# 3.19 Слияние фреймов данных
+
+# Создать фрейм данных с данными людей
+import pandas as pd
+
+employee_data = {'employee_id': ['1', '2', '3', '4'],
+                 'name': ['Nikita', 'Anna', 'Roma', 'Kostya']}
+
+dataframe_employees = pd.DataFrame(employee_data, columns=['employee_id', 'name'])
+
+# Создать фрейм данных с данными о продажах людей
+
+sales_data = {'employee_id': ['3', '4', '5', '6'],
+              'total sales': [23456, 2512, 7890, 1455]}
+dataframe_sales = pd.DataFrame(sales_data, columns=['employee_id', 'total sales'])
+# print(dataframe_sales)
+
+# Выполнить слияние фреймов данных (Посмотрит 'employee_id' и вернет значения и сделает их одним целым фреймом)
+# print(pd.merge(dataframe_employees, dataframe_sales, on='employee_id'))
+
+# Выполнить внешнее слияние фреймов данных (Сделает единым оба фрейма данных)
+# print(pd.merge(dataframe_employees, dataframe_sales, on='employee_id', how='outer'))
+
+# LeetCode (astype), функция позволяющая менять тип данных
+# print(df.astype({'numbers':int})))
+
+# LeetCode (fillna), функция позволяющая заполнять нулевые значения
+# print(df['quantity'].fillna(0,inplace=True)
+
+# LeetCode (melt), функция позволяющая изменить форму данных в виде таблицы
+# pd.melt(df, id_vars=['product'], var_name='quarter', value_name='sales')
+
 
 
